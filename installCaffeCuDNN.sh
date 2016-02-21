@@ -28,6 +28,7 @@ cd ~/
 git clone https://github.com/BVLC/caffe.git
 cd caffe 
 cp Makefile.config.example Makefile.config
+# Enable cuDNN usage
 sudo sed -i 's/# USE_CUDNN := 1/USE_CUDNN := 1/' Makefile.config
 # Dec. 7, 2015; This only appears in once place currently
 # This is a 32 bit OS LMDB_MAP_SIZE needs to be reduced from
