@@ -1,7 +1,11 @@
 #!/bin/sh
+# Script for installing Caffe with cuDNN support on Jetson TX1 Development Kitls
+# 2-21-16 JetsonHacks.com
+# MIT License
 # Install and compile Caffe on NVIDIA Jetson TX1 Development Kit
-# OpenCV4Tegra should already be installed
-# cuDNN v4 should already be installed
+# Prerequisites (which can be installed with JetPack 2):
+# OpenCV4Tegra
+# cuDNN v4
 sudo add-apt-repository universe
 sudo apt-get update -y
 /bin/echo -e "\e[1;32mLoading Caffe Dependencies.\e[0m"
@@ -34,9 +38,9 @@ git grep -lz "// 1TB" | xargs -0 sed -i 's:// 1TB:// 1/2TB:g'
 # Use only 3 cores on L4T 23.1 install ; 
 # 4 cores hangs system
 /bin/echo -e "\e[1;32mCompiling Caffe\e[0m"
-# make -j 3 all
+make -j 3 all
 # Run the tests to make sure everything works
 /bin/echo -e "\e[1;32mRunning Caffe Tests\e[0m"
-# make -j 3 runtest
+make -j 3 runtest
 # The following is a quick timing test ...
 # build/tools/caffe time --model=models/bvlc_alexnet/deploy.prototxt --gpu=0
