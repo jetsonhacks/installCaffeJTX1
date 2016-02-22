@@ -5,6 +5,7 @@
 # Install and compile Caffe on NVIDIA Jetson TX1 Development Kit
 # Prerequisites (which can be installed with JetPack 2):
 # OpenCV4Tegra
+# CUDA 7.0
 # cuDNN v4
 sudo add-apt-repository universe
 sudo apt-get update -y
@@ -18,7 +19,6 @@ sudo apt-get install --no-install-recommends libboost-all-dev -y
 sudo apt-get install libatlas-base-dev -y
 # Remaining Dependencies
 sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev -y
-
 
 sudo usermod -a -G video $USER
 /bin/echo -e "\e[1;32mCloning Caffe into the home directory\e[0m"
