@@ -21,6 +21,7 @@ sudo apt-get install --no-install-recommends libboost-all-dev -y
 sudo apt-get install libatlas-base-dev -y
 # Remaining Dependencies
 sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev -y
+sudo apt-get install python-dev python-numby -y
 
 sudo usermod -a -G video $USER
 /bin/echo -e "\e[1;32mCloning Caffe into the home directory\e[0m"
@@ -36,11 +37,10 @@ sed -i 's/# USE_CUDNN/USE_CUDNN/g' Makefile.config
 cmake -DCUDA_USE_STATIC_CUDA_RUNTIME=OFF
 # Include the hdf5 directory for the includes; 16.04 has issues for some reason
 echo "INCLUDE_DIRS += /usr/include/hdf5/serial/" >> Makefile.config
-# 4 cores hangs system
 /bin/echo -e "\e[1;32mCompiling Caffe\e[0m"
-make -j 3 all
+make -j4 all
 # Run the tests to make sure everything works
 /bin/echo -e "\e[1;32mRunning Caffe Tests\e[0m"
-make -j 3 runtest
+make -j4 runtest
 # The following is a quick timing test ...
 # tools/caffe time --model=models/bvlc_alexnet/deploy.prototxt --gpu=0
