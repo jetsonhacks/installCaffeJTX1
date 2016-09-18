@@ -21,7 +21,7 @@ sudo apt-get install --no-install-recommends libboost-all-dev -y
 sudo apt-get install libatlas-base-dev -y
 # Remaining Dependencies
 sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev -y
-sudo apt-get install python-dev python-numby -y
+sudo apt-get install python-dev python-numpy -y
 
 sudo usermod -a -G video $USER
 /bin/echo -e "\e[1;32mCloning Caffe into the home directory\e[0m"
